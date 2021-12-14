@@ -9,7 +9,7 @@ body {
 .parallax {
   position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 512px;
   overflow: hidden;
 }
 
@@ -19,7 +19,7 @@ body {
   left: 0;
   width: calc(100% + 100px);
   height: 100%;
-  background-position: center;
+  background-position: 50% 62%;
   background-repeat: no-repeat;
   background-size: contain;
 }
@@ -30,23 +30,33 @@ body {
 }
 
 .parallax-layer__2 {
-  background-image: url(assets/wing%201.png);
+  background-image: url(assets/birds.png);
+  background-size: 488px 243px;
+  background-position: 85% calc(50% + -150px);
+}
+
+.parallax-layer__3_1 {
+  background-image: url(assets/cloud_1.png);
   background-size: cover;
 }
 
-.parallax-layer__3 {
-  background-image: url(assets/wing%202.png);
+.parallax-layer__3_2 {
+  background-image: url(assets/cloud_2.png);
   background-size: cover;
 }
 
 .parallax-layer__4 {
-  background-image: url(assets/jump.png);
+  background-image: url(assets/wing-2.png);
   background-size: cover;
 }
 
 .parallax-layer__5 {
-  background-image: url(assets/layer-2.png);
-  background-size: 488px 243px;
-  background-position: 85% calc(50% + -150px);
+  background-image: url(assets/wing-1.png);
+  background-size: cover;
+}
+
+.parallax-layer__6 {
+  background-image: url(assets/bridge.png);
+  background-size: cover;
 }
 /*# sourceMappingURL=style.css.map */
