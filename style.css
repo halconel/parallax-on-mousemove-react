@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  height: 512px;
+  height: 812px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 }
@@ -17,7 +17,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  width: calc(100% + 50px);
+  width: calc(100% + 120px);
   height: 100%;
   background-position: center;
   background-repeat: no-repeat;
