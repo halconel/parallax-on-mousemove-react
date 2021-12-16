@@ -1,24 +1,30 @@
-$height: 812px;
+$width: 1440px;
+$height: 512px;
 
-$layers: (1: url(assets/back.png),
+$layers_img: (1: url(assets/back.png),
   2: url(assets/birds.png),
   3: url(assets/cloud_2.png),
   4: url(assets/wing-2.png),
   5: url(assets/wing-1.png),
   6: url(assets/bridge.png));
 
+$layers_pos: (4: 50px,
+  5: 50px,
+  6: 50px);
+
 body {
   margin: 0;
   padding: 0;
-  height: $height;
+  width: $width;
   box-sizing: border-box;
 }
 
 .parallax {
   position: relative;
   overflow: hidden;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: $height;
+  min-width: 1440px;
 
   &-layer {
     position: absolute;
@@ -30,13 +36,17 @@ body {
 
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
 
-    @each $layer, $img in $layers {
+    @each $layer,
+    $img in $layers_img {
       &__#{$layer} {
         background-image: $img;
-        background-size: cover;
       }
+    }
+
+    &__6 {
+      height: 110%
     }
   }
 }
