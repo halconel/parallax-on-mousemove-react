@@ -1,66 +1,42 @@
+$height: 512px;
+
+$layers: (1: url(assets/back.png),
+  2: url(assets/birds.png),
+  3: url(assets/cloud_2.png),
+  4: url(assets/wing-2.png),
+  5: url(assets/wing-1.png),
+  6: url(assets/bridge.png));
+
 body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background: #edeff4;
+  margin: 0;
+  padding: 0;
+  height: $height;
+  box-sizing: border-box;
 }
 
 .parallax {
-    position: relative;
-    width: 100vw;
-    height: 512px;
-    overflow: hidden;
-    &-layer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: calc(100% + 100px);
-        height: 100%;
-        background-position: 50% 62%;
-        background-repeat: no-repeat;
-        background-size: contain;
-        &__1 {
-            background-image: url(assets/back.png);
-            background-size: cover;
-        }
-        &__2 {
-            background-image: url(assets/birds.png);
-            background-size: 488px 243px;
-            background-position: 85% calc(50% + -150px);
-        }
-        &__3_1 {
-            background-image: url(assets/cloud_1.png);
-            background-size: cover;
-        }
-        &__3_2 {
-            background-image: url(assets/cloud_2.png);
-            background-size: cover;
-        }
-        &__4 {
-            background-image: url(assets/wing-2.png);
-            background-size: cover;
-        }
-        &__5 {
-            background-image: url(assets/wing-1.png);
-            background-size: cover;
-        }
-        &__6 {
-            background-image: url(assets/bridge.png);
-            background-size: cover;
-        }
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+
+  &-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: calc(100% + 50px);
+    height: 100%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    @each $layer, $img in $layers {
+      &__#{$layer} {
+        background-image: $img;
+        background-size: cover;
+      }
     }
-}
-
-//socials
-$app-color: #2b2a49;
-@mixin animated($duraction: 0.3s) {
-    -webkit-transition: $duraction;
-    -o-transition: $duraction;
-    transition: $duraction;
-}
-
-@mixin transform($string) {
-    -webkit-transform: $string;
-    -ms-transform: $string;
-    transform: $string;
+  }
 }
