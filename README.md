@@ -8,7 +8,9 @@ The UI concept is abaleble [here](https://www.figma.com/file/jLhpyqR3KGDO6hRhVkm
 
 ## Screenshots
 
+![live](./build/index.html)
 ![screen shot](./screenshots/scr-image-1.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
