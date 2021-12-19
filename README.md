@@ -6,9 +6,10 @@ This react app is proof of concept (POC), which implemets
 parallax for [skyderby.ru](https://skyderby.ru) home page at first top section
 The UI concept is abaleble [here](https://www.figma.com/file/jLhpyqR3KGDO6hRhVkmXyB/Skyderby?node-id=2%3A2)
 
+### Try it [__live__](https://halconel.github.io/parallax-on-mousemove-react/)
+
 ## Screenshots
 
-![live](./build/index.html)
 ![screen shot](./screenshots/scr-image-1.png)
 
 ## Available Scripts

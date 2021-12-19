@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/parallax-on-mousemove-react/static/css/main.fce160d1.css",
+    "main.js": "/parallax-on-mousemove-react/static/js/main.f540738f.js",
+    "static/js/787.957625af.chunk.js": "/parallax-on-mousemove-react/static/js/787.957625af.chunk.js",
+    "static/media/back.png": "/parallax-on-mousemove-react/static/media/back.6cd27ba1cdc74d6ca916.png",
+    "static/media/cloud_2.png": "/parallax-on-mousemove-react/static/media/cloud_2.e1ab6e934a37bfe3b00c.png",
+    "static/media/bridge.png": "/parallax-on-mousemove-react/static/media/bridge.07551f236281b834d885.png",
+    "static/media/wing-1.png": "/parallax-on-mousemove-react/static/media/wing-1.b6e9c236feb7f96e475e.png",
+    "static/media/wing-2.png": "/parallax-on-mousemove-react/static/media/wing-2.8a35c4b3d4baedf38d12.png",
+    "static/media/logo.svg": "/parallax-on-mousemove-react/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/parallax-on-mousemove-react/index.html",
+    "main.fce160d1.css.map": "/parallax-on-mousemove-react/static/css/main.fce160d1.css.map",
+    "main.f540738f.js.map": "/parallax-on-mousemove-react/static/js/main.f540738f.js.map",
+    "787.957625af.chunk.js.map": "/parallax-on-mousemove-react/static/js/787.957625af.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.fce160d1.css",
+    "static/js/main.f540738f.js"
+  ]
+}
