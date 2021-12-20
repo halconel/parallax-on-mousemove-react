@@ -21,11 +21,11 @@ function handleDeviceOrientation(event: DeviceOrientationEvent, wrapper: HTMLDiv
   
   if (beta == null || gamma == null) return { x: 0, y: 0 }
   
-  const x = 100 * (90 + beta) / 180
-  const y = 100 * (90 + gamma) / 180
+  const x = 100 * (90 + beta) / 90
+  const y = 100 * (90 + gamma) / 90
 
-  if (orientation.type === 'portrait-primary') return { x: y, y: x }
-  else return {x, y}
+  if (orientation.type === 'portrait-primary') return { x: y - 48, y: x - 73 }
+  else return {x: x - 48, y: y - 73}
 }
 
 // Handle mouse move event and return offset on x & y axis in precents
