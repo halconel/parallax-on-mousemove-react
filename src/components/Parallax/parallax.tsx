@@ -24,8 +24,8 @@ function handleDeviceOrientation(event: DeviceOrientationEvent, wrapper: HTMLDiv
 
   const deltaBeta = initState.beta - beta
   const deltaGamma = initState.gamma - gamma
-  const x = 100 * (90 + deltaBeta) / 45
-  const y = 100 * (90 + deltaGamma) / 45
+  const x = 100 * (deltaBeta) / 45
+  const y = 100 * (deltaGamma) / 45
 
   if (orientation.type === 'portrait-primary') return { x: y, y: x }
   else return { x: x, y: y }
