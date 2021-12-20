@@ -18,19 +18,11 @@ interface IPosition {
 // Handle device orientation event and return offset on x & y axis in precents
 function handleDeviceOrientation(event: DeviceOrientationEvent, wrapper: HTMLDivElement, orientation: ScreenOrientation): IPosition {
   const { beta, gamma } = event
-  // DEBUG ++
-  console.log({ beta, gamma })
-  const output = document.querySelector('.DEBUG');
-  if (output) {
-    output.textContent = `beta : ${beta}\n`;
-    output.textContent += `gamma: ${gamma}\n`;
-  }
-  // DEBUG --
-
-  if (!beta || !gamma) return { x: 0, y: 0 }
-
-  const x = wrapper.offsetWidth * (90 + beta) / 90
-  const y = wrapper.offsetHeight * (90 + gamma) / 90
+  
+  if (beta == null || gamma == null) return { x: 0, y: 0 }
+  
+  const x = 100 * (90 + beta) / 180
+  const y = 100 * (90 + gamma) / 180
 
   if (orientation.type === 'portrait-primary') return { x: y, y: x }
   else return {x, y}
@@ -74,6 +66,13 @@ function setStyles(pos: IPosition, layers: ILayerSetup[]) {
 export const getParallaxFuctionForMouseEvent = (wrapper: HTMLDivElement, layers: ILayerSetup[]) => {
   return (event: MouseEvent) => {
     const pos: IPosition = handleMouseMove(event, wrapper)
+    // DEBUG ++
+    const output = document.querySelector('.DEBUG');
+    if (output) {
+      output.textContent = `x : ${pos.x}\n`;
+      output.textContent += `y: ${pos.y}\n`;
+    }
+    // DEBUG --
     console.log(pos)
     setStyles(pos, layers)
   }
@@ -83,6 +82,13 @@ export const getParallaxFuctionForMouseEvent = (wrapper: HTMLDivElement, layers:
 export const getParallaxFuctionForDeviceEvent = (wrapper: HTMLDivElement, layers: ILayerSetup[], orientation: ScreenOrientation) => {
   return (event: DeviceOrientationEvent) => {
     const pos: IPosition = handleDeviceOrientation(event, wrapper, orientation)
+    // DEBUG ++
+    const output = document.querySelector('.DEBUG');
+    if (output) {
+      output.textContent = `x : ${pos.x}\n`;
+      output.textContent += `y: ${pos.y}\n`;
+    }
+    // DEBUG --
     console.log(pos)
     setStyles(pos, layers)
   }
