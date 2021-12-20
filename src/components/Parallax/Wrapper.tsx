@@ -1,13 +1,13 @@
 import React, { useCallback, useLayoutEffect, useRef } from "react";
-import Layer, { LayerPropsInterface } from './Layer'
-import getParallaxFuction from './parallax'
+import Layer from './Layer'
+import getParallaxFuction, { ILayerSetup } from './parallax'
 import '../../styles/Wrapper.scss'
 
-export interface LayersArray {
-  layers: LayerPropsInterface[]
+export interface IWrapperProps {
+  layers: ILayerSetup[]
 }
 
-const Wrapper = (props: LayersArray) => {
+const Wrapper = (props: IWrapperProps) => {
   const { layers } = props
 
   const node = useRef<HTMLDivElement>(null)
@@ -22,7 +22,8 @@ const Wrapper = (props: LayersArray) => {
 
   return (
     <div className="parallax" ref={node}>
-      {layers.map((layer, index) => <Layer node={layer.node} key={index} index={index}/>)}
+      {layers.map((layer, index) => 
+        <Layer node={layer.node} key={index} index={index} name={layer.name} />)}
     </div>
   )
 }

@@ -1,16 +1,18 @@
-import { LayerPropsInterface } from "./Layer"
+import { RefObject } from "react"
 
-export interface LayerProperties {
-  deep?: string,     // number: -5000...5000
-  origin?: string,   // number: 0...width
-  factorX?: string,  // float: 0...5, perspective coefficient
-  factorY?: string,  // float: 0...5, perspective coefficient
-  disallow?: string, // string: 'x' || 'y' || 'both'
+export interface ILayerSetup {
+  node: RefObject<HTMLDivElement>, // ref to the layer HTML element
+  name: string,      // layer name
+  deep: number,      // how far from camera: -5000...5000
+  origin?: string,   // transform origin for camera rotation effect: 0...width
+  factorX?: number,  // perspective factor for camera rotation effect: 0...5, 
+  factorY?: number,  // 
+  disallow?: string, // disallow parallay for directions: 'x' || 'y' || 'both'
 }
 
 // Return a callback function for `mousemove` event, 
 // which changes the transform attribute in the layer style
-const getParallaxFuction = (wrapper: HTMLDivElement, layers: LayerPropsInterface[]) => {
+const getParallaxFuction = (wrapper: HTMLDivElement, layers: ILayerSetup[]) => {
   return (event: MouseEvent) => {
     const { clientX, clientY } = event
     const x = 100 * clientX / wrapper.offsetWidth

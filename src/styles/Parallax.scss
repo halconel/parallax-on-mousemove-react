@@ -1,12 +1,6 @@
 $width: 1440px;
 $height: 712px;
 
-$layers_img: (0: url(../../public/assets/back.png),
-  1: url(../../public/assets/cloud_2.png),
-  2: url(../../public/assets/wing-2.png),
-  3: url(../../public/assets/wing-1.png),
-  4: url(../../public/assets/bridge.png));
-
 .parallax {
   position: relative;
   overflow: hidden;
@@ -18,19 +12,9 @@ $layers_img: (0: url(../../public/assets/back.png),
     top: 0;
     left: 0;
 
-    width: calc(100% + 120px);
+    width: calc(100% + 20px);
+    object-fit: cover;
     height: 100%;
-
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-
-    @each $layer,
-    $img in $layers_img {
-      &__#{$layer} {
-        background-image: $img;
-      }
-    }
 
     &__4 {
       height: 101%
