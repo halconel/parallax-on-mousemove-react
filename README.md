@@ -1,13 +1,20 @@
 # Parallax on mouse move
 
-## Proof of concept 
+## Description 
 
-This react app is proof of concept (POC), which implemets
-parallax for [skyderby.ru](https://skyderby.ru) home page at first top section
-The UI concept is abaleble [here](https://www.figma.com/file/jLhpyqR3KGDO6hRhVkmXyB/Skyderby?node-id=2%3A2)
+This react app is proof of concept (POC), which implements parallax for [skyderby.ru](https://skyderby.ru) home page at the first top section The UI concept is available [here](https://www.figma.com/file/jLhpyqR3KGDO6hRhVkmXyB/Skyderby?node-id=2%3A2)
 
-### Try it [__live__](https://halconel.github.io/parallax-on-mousemove-react/)
+## Try it [__live__](https://halconel.github.io/parallax-on-mousemove-react/) :smile:
+Use mouse movement on the desktop and device orientation on mobile devices.
 
+Key features and technology stack:
+* Parallax on mouse movement
+* Parallax on device orientation
+* Progressive image loading
+* Webpack
+* React
+* Typescript
+* SASS
 ## Screenshots
 
 ![screen shot](./screenshots/scr-image-1.png)
