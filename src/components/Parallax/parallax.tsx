@@ -69,13 +69,6 @@ function setStyles(pos: IPosition, layers: ILayerSetup[]) {
 export const getParallaxFuctionForMouseEvent = (wrapper: HTMLDivElement, layers: ILayerSetup[]) => {
   return (event: MouseEvent) => {
     const pos: IPosition = handleMouseMove(event, wrapper)
-    // DEBUG ++
-    const output = document.querySelector('.DEBUG');
-    if (output) {
-      output.textContent = `x : ${pos.x}\n`;
-      output.textContent += `y: ${pos.y}\n`;
-    }
-    // DEBUG --
     setStyles(pos, layers)
   }
 }
@@ -84,13 +77,6 @@ export const getParallaxFuctionForMouseEvent = (wrapper: HTMLDivElement, layers:
 export const getParallaxFuctionForDeviceEvent = (wrapper: HTMLDivElement, layers: ILayerSetup[], orientation: ScreenOrientation, initState: IGyroInitState) => {
   return (event: DeviceOrientationEvent) => {
     const pos: IPosition = handleDeviceOrientation(event, wrapper, orientation, initState)
-    // DEBUG ++
-    const output = document.querySelector('.DEBUG');
-    if (output) {
-      output.textContent = `x : ${pos.x}\n`;
-      output.textContent += `y: ${pos.y}\n`;
-    }
-    // DEBUG --
     setStyles(pos, layers)
   }
 }

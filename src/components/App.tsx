@@ -22,7 +22,6 @@ function App() {
           <img src={logo} className='App-logo' alt='logo' />
         </div>
       </section>
-      <div className='DEBUG'><p>o</p></div>
     </div>
   );
 }
