@@ -22,8 +22,8 @@ function handleDeviceOrientation(event: DeviceOrientationEvent, wrapper: HTMLDiv
 
   if (beta == null || gamma == null) return { x: 0, y: 0 }
 
-  const deltaBeta = initState.beta - beta
-  const deltaGamma = initState.gamma - gamma
+  const deltaBeta = beta - initState.beta
+  const deltaGamma = gamma - initState.gamma
   const x = 100 * (deltaBeta) / 45
   const y = 100 * (deltaGamma) / 45
 
