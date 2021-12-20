@@ -1,4 +1,5 @@
 import { RefObject } from "react"
+import { IGyroInitState } from "./hooks"
 
 export interface ILayerSetup {
   node: RefObject<HTMLDivElement>,  // ref to the layer HTML element
@@ -16,16 +17,18 @@ interface IPosition {
 }
 
 // Handle device orientation event and return offset on x & y axis in precents
-function handleDeviceOrientation(event: DeviceOrientationEvent, wrapper: HTMLDivElement, orientation: ScreenOrientation): IPosition {
+function handleDeviceOrientation(event: DeviceOrientationEvent, wrapper: HTMLDivElement, orientation: ScreenOrientation, initState: IGyroInitState): IPosition {
   const { beta, gamma } = event
-  
-  if (beta == null || gamma == null) return { x: 0, y: 0 }
-  
-  const x = 100 * (90 + beta) / 45
-  const y = 100 * (90 + gamma) / 45
 
-  if (orientation.type === 'portrait-primary') return { x: y - 48*3, y: x - 73*3 }
-  else return {x: x - 48*3, y: y - 73*3}
+  if (beta == null || gamma == null) return { x: 0, y: 0 }
+
+  const deltaBeta = initState.beta - beta
+  const deltaGamma = initState.gamma - gamma
+  const x = 100 * (90 + deltaBeta) / 45
+  const y = 100 * (90 + deltaGamma) / 45
+
+  if (orientation.type === 'portrait-primary') return { x: y, y: x }
+  else return { x: x, y: y }
 }
 
 // Handle mouse move event and return offset on x & y axis in precents
@@ -73,15 +76,14 @@ export const getParallaxFuctionForMouseEvent = (wrapper: HTMLDivElement, layers:
       output.textContent += `y: ${pos.y}\n`;
     }
     // DEBUG --
-    console.log(pos)
     setStyles(pos, layers)
   }
 }
 
 // Returns a callback function for `deviceorientation` event 
-export const getParallaxFuctionForDeviceEvent = (wrapper: HTMLDivElement, layers: ILayerSetup[], orientation: ScreenOrientation) => {
+export const getParallaxFuctionForDeviceEvent = (wrapper: HTMLDivElement, layers: ILayerSetup[], orientation: ScreenOrientation, initState: IGyroInitState) => {
   return (event: DeviceOrientationEvent) => {
-    const pos: IPosition = handleDeviceOrientation(event, wrapper, orientation)
+    const pos: IPosition = handleDeviceOrientation(event, wrapper, orientation, initState)
     // DEBUG ++
     const output = document.querySelector('.DEBUG');
     if (output) {
@@ -89,7 +91,6 @@ export const getParallaxFuctionForDeviceEvent = (wrapper: HTMLDivElement, layers
       output.textContent += `y: ${pos.y}\n`;
     }
     // DEBUG --
-    console.log(pos)
     setStyles(pos, layers)
   }
 }
