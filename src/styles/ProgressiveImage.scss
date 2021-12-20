@@ -5,8 +5,7 @@
   transform: translateY(-50%);
   opacity: 0;
   
-  min-width: 100%;
-  max-width: 100%;
+  width: 100%;
   height: auto;
   transition: opacity ease-in 300ms;
 }
@@ -17,8 +16,7 @@
   top: 50%;
   transform: translateY(-50%);
   
-  min-width: 100%;
-  max-width: 100%;
+  width: 100%;
   height: auto;
 
   transition: opacity ease-in 600ms;

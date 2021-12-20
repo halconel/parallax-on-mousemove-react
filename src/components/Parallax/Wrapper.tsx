@@ -1,7 +1,8 @@
-import React, { useCallback, useLayoutEffect, useRef } from "react";
+import React from "react";
 import Layer from './Layer'
-import getParallaxFuction, { ILayerSetup } from './parallax'
+import { ILayerSetup } from './parallax'
 import '../../styles/Wrapper.scss'
+import { useInitGyroscope, useOrientation, useParallax } from "./hooks";
 
 export interface IWrapperProps {
   layers: ILayerSetup[]
@@ -9,20 +10,16 @@ export interface IWrapperProps {
 
 const Wrapper = (props: IWrapperProps) => {
   const { layers } = props
-
-  const node = useRef<HTMLDivElement>(null)
-  const parallax = useCallback(getParallaxFuction, [])
-
-  useLayoutEffect(() => {
-    if (node.current) {
-      node.current.addEventListener('mousemove', parallax(node.current, layers))
-      return node.current.removeEventListener('mousemove', parallax(node.current, layers))
-    }
-  }, [layers, parallax])
+  // Portrait and landscape orientation
+  const orientation = useOrientation()
+  // Check for gyroscope and init gyroscope state
+  const gyro = useInitGyroscope()
+  // Add parallax function on mouse & device events
+  const ref = useParallax(layers, orientation, gyro)
 
   return (
-    <div className="parallax" ref={node}>
-      {layers.map((layer, index) => 
+    <div className="parallax" ref={ref}>
+      {layers.map((layer, index) =>
         <Layer node={layer.node} key={index} index={index} name={layer.name} />)}
     </div>
   )

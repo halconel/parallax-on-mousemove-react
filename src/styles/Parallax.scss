@@ -1,8 +1,11 @@
-$width: 1440px;
-$height: 712px;
+$width: 100vw;
+$height: 90vh;
 
 .parallax {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  
   overflow: hidden;
   width: $width;
   height: $height;

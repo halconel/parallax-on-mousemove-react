@@ -15,11 +15,11 @@ function App() {
   ]
 
   return (
-    <div className="App">
-      <section className="App-header">
+    <div className='App'>
+      <section className='App-header'>
         <Wrapper layers={layers} />
-        <div className="App-logo-wrapper">
-          <img src={logo} className="App-logo" alt="logo" />
+        <div className='App-logo-wrapper'>
+          <img src={logo} className='App-logo' alt='logo' />
         </div>
       </section>
     </div>
