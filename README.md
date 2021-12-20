@@ -1,4 +1,4 @@
-# Parallax on mouse move
+# Parallax on React :atom:
 
 ## Description 
 
