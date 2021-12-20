@@ -1,18 +1,19 @@
 import React, { RefObject } from "react";
+import ProgressiveImage from "../ProgressiveImage";
 
-export interface LayerPropsInterface {
-  index?: number,
+export interface ILayerProps {
+  index: number,
   node: RefObject<HTMLDivElement>,
-  disallow?: string,
-  deep?: number,
-  origin?: string,
-  factorX?: number,
-  factorY?: number,
+  name: string,
 }
 
-const Layer = (props: LayerPropsInterface) => {
-  const { node, index} = props
-  return <div ref={node} className={`parallax-layer parallax-layer__${index}`}/>
+const Layer = (props: ILayerProps) => {
+  const { node, index, name } = props
+  return (
+    <div ref={node} className={`parallax-layer parallax-layer__${index}`}>
+      <ProgressiveImage index={index} name={name}/>
+    </div>
+  )
 }
 
 export default Layer

@@ -1,0 +1,27 @@
+.progressive-image {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0;
+  
+  min-width: 100%;
+  max-width: 100%;
+  height: auto;
+  transition: opacity ease-in 300ms;
+}
+
+.progressive-image-overlay {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  
+  min-width: 100%;
+  max-width: 100%;
+  height: auto;
+
+  transition: opacity ease-in 600ms;
+  filter: blur(1px);
+  clip-path: inset(0);
+}
