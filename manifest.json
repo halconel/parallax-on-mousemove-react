@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Parallax",
+  "name": "Parallax on mouse move",
   "icons": [
     {
       "src": "favicon.ico",
