@@ -32,8 +32,8 @@ function handleDeviceOrientation(event: DeviceOrientationEvent, wrapper: HTMLDiv
   const x = wrapper.offsetWidth * (90 + beta) / 90
   const y = wrapper.offsetHeight * (90 + gamma) / 90
 
-  if (orientation.type === 'portrait-primary') return { x, y }
-  else return { x: y, y: x }
+  if (orientation.type === 'portrait-primary') return { x: y, y: x }
+  else return {x, y}
 }
 
 // Handle mouse move event and return offset on x & y axis in precents
