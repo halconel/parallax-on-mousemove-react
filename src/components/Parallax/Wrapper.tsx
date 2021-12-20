@@ -1,6 +1,6 @@
-import React, { useCallback, useLayoutEffect, useRef } from "react";
+import React, { useCallback, useLayoutEffect, useRef, useState } from "react";
 import Layer from './Layer'
-import getParallaxFuction, { ILayerSetup } from './parallax'
+import { getParallaxFuctionForDeviceEvent, getParallaxFuctionForMouseEvent, ILayerSetup } from './parallax'
 import '../../styles/Wrapper.scss'
 
 export interface IWrapperProps {
@@ -10,20 +10,38 @@ export interface IWrapperProps {
 const Wrapper = (props: IWrapperProps) => {
   const { layers } = props
 
+  const [orientation, setOrientation] = useState(0)
   const node = useRef<HTMLDivElement>(null)
-  const parallax = useCallback(getParallaxFuction, [])
+  const parallaxOnMouse = useCallback(getParallaxFuctionForMouseEvent, [])
+  const parallaxOnDevice = useCallback(getParallaxFuctionForDeviceEvent, [])
+
+  useLayoutEffect(() => {
+    const onOrientationChange = () => {
+      if(orientation !== window.orientation) {
+        setOrientation(window.orientation)
+      }
+    }
+    window.addEventListener('orientationchange', onOrientationChange);
+  }, [orientation])
 
   useLayoutEffect(() => {
     if (node.current) {
-      node.current.addEventListener('mousemove', parallax(node.current, layers))
-      return node.current.removeEventListener('mousemove', parallax(node.current, layers))
+      node.current.addEventListener('mousemove', parallaxOnMouse(node.current, layers))
+      return node.current.removeEventListener('mousemove', parallaxOnMouse(node.current, layers))
     }
-  }, [layers, parallax])
+  }, [layers, parallaxOnMouse])
+
+  useLayoutEffect(() => {
+    if (node.current) {
+      window.addEventListener('deviceorientation', parallaxOnDevice(layers, orientation))
+      return window.removeEventListener('deviceorientation', parallaxOnDevice(layers, orientation))
+    }
+  }, [layers, parallaxOnDevice, orientation])
 
   return (
     <div className="parallax" ref={node}>
       {layers.map((layer, index) => 
-        <Layer node={layer.node} key={index} index={index} name={layer.name} />)}
+        <Layer node={layer.node} key={index} index={index} name={layer.name}/>)}
     </div>
   )
 }
