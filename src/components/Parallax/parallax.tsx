@@ -16,14 +16,23 @@ interface IPosition {
 }
 
 // Handle device orientation event and return offset on x & y axis in precents
-function handleDeviceOrientation (event: DeviceOrientationEvent, orientation: Number): IPosition {
+function handleDeviceOrientation(event: DeviceOrientationEvent, wrapper: HTMLDivElement, orientation: ScreenOrientation): IPosition {
   const { beta, gamma } = event
-  if (!beta || !gamma) return { x: 0, y: 0}
+  // DEBUG ++
+  console.log({ beta, gamma })
+  const output = document.querySelector('.DEBUG');
+  if (output) {
+    output.textContent = `beta : ${beta}\n`;
+    output.textContent += `gamma: ${gamma}\n`;
+  }
+  // DEBUG --
 
-  const x = 100 * (90 - beta) / 180
-  const y = 100 * (90 - gamma) / 180
+  if (!beta || !gamma) return { x: 0, y: 0 }
 
-  if (orientation === 90) return { x, y }
+  const x = wrapper.offsetWidth * (90 + beta) / 90
+  const y = wrapper.offsetHeight * (90 + gamma) / 90
+
+  if (orientation.type === 'portrait-primary') return { x, y }
   else return { x: y, y: x }
 }
 
@@ -38,7 +47,6 @@ function handleMouseMove(event: MouseEvent, wrapper: HTMLDivElement): IPosition 
 
 // Changes the transform attributes in the layer style
 function setStyles(pos: IPosition, layers: ILayerSetup[]) {
-  console.log('called setStyles')
   for (let layer of layers) {
     if (!layer.deep || !layer.node.current) return
 
@@ -66,14 +74,16 @@ function setStyles(pos: IPosition, layers: ILayerSetup[]) {
 export const getParallaxFuctionForMouseEvent = (wrapper: HTMLDivElement, layers: ILayerSetup[]) => {
   return (event: MouseEvent) => {
     const pos: IPosition = handleMouseMove(event, wrapper)
+    console.log(pos)
     setStyles(pos, layers)
   }
 }
 
 // Returns a callback function for `deviceorientation` event 
-export const getParallaxFuctionForDeviceEvent = (layers: ILayerSetup[], orientation: Number) => {
+export const getParallaxFuctionForDeviceEvent = (wrapper: HTMLDivElement, layers: ILayerSetup[], orientation: ScreenOrientation) => {
   return (event: DeviceOrientationEvent) => {
-    const pos: IPosition = handleDeviceOrientation(event, orientation)
+    const pos: IPosition = handleDeviceOrientation(event, wrapper, orientation)
+    console.log(pos)
     setStyles(pos, layers)
   }
 }

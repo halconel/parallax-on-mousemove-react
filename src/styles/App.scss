@@ -1,11 +1,17 @@
+.DEBUG {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  color: red;
+}
 .App {
   text-align: center;
 }
 
 .App-logo-wrapper {
-  position: relative;
-  left: -580px;
-  top: -680px;
+  position: absolute;
+  left: 0;
+  top: 6%;
 
   height: 0;
 }
@@ -26,13 +32,10 @@
 }
 
 .App-header {
+  position: relative;
   background-color: #042535;
-  min-width: 1440px;
+  min-width: 100vw;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
 }
